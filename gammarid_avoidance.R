@@ -366,7 +366,7 @@ dg.loc <- transform(dg.loc,
                     y = PX_mean,
                     ymin = PX_min,
                     ymax = PX_max)
-dg.loc$TC_group <- as.factor(c(1,2,3,1,4,5,6,7,8,9,8,10,
+dg.loc$TC_group <- as.factor(c(1,2,3,1,4,5,6,7,8,9,10,8,
                                11,12,13,14,15,13,16,17,18,16,17,18,
                                19,20,21,22,23,24,25,26,27,28,29,27))
 
@@ -426,3 +426,7 @@ PITminIC # rows: species, cols: areas
 ## by giving NS T and C combinations the same level in
 ## a special factor TC_group. Lines are then drawn with
 ## geom_lines(aes(group=TC_group))
+
+## Posterior probability that Pr(A)_UT - Pr(A)_UC > Pr(A)_IT - Pr(A)_IC
+
+apply(Q[,,2,]-Q[,,1,]>Q[,,4,]-Q[,,3,],c(2,3),sum)/n_sim
